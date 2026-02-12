@@ -1151,7 +1151,7 @@ impl BottomPaneView for RequestUserInputOverlay {
                     self.sync_composer_placeholder();
                     return;
                 }
-                if matches!(key_event.code, KeyCode::Enter) {
+                if key_event.code == KeyCode::Enter && key_event.modifiers == KeyModifiers::NONE {
                     self.ensure_selected_for_notes();
                     self.pending_submission_draft = Some(self.capture_composer_draft());
                     let (result, _) = self.composer.handle_key_event(key_event);
